@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+
+  @media screen and (prefers-reduced-motion: reduce) {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  color: var(--color-text);
+  font-family: -apple-system, Rubik, '思源黑体', Segoe UI, Roboto,
+    Helvetica Neue, PingFang SC, Noto Sans, Noto Sans CJK SC, Microsoft YaHei,
+    微软雅黑, sans-serif;
+  background: var(--color-background);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: hsla(var(--color-primary-hsl), 0.15);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #c0c0c0;
+  border: none;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-track-piece {
+  background-color: var(--color-background);
+}
