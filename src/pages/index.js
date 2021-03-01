@@ -106,6 +106,63 @@ const Quote = styled.div`
   }
 `
 
+const Grid = styled.div`
+  position: relative;
+  left: 50%;
+  display: flex;
+  flex-wrap: wrap;
+  width: 1150px;
+  margin: 0 -1rem;
+  transform: translateX(-50%);
+`
+
+const GridItem = styled.div`
+  width: calc(100% / 3);
+  padding: 1rem;
+
+  .item-box {
+    min-height: 21rem;
+    padding: 0.8rem 1.2rem;
+    background: #fff;
+    border-radius: 0.6rem;
+    box-shadow: 0 0.4rem 1.4rem 0 rgb(225 225 234 / 70%);
+
+    .icon {
+      width: 3.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .title {
+      font-weight: bold;
+      font-size: 1rem;
+    }
+
+    .description {
+      position: relative;
+      padding: 0.4rem 0 0.8rem 0;
+      font-weight: bold;
+      font-size: 0.9rem;
+
+      &::after {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 2rem;
+        height: 0.09rem;
+        background: #ff7626;
+        content: '';
+      }
+    }
+
+    .content {
+      padding-top: 0.8rem;
+      color: #828594;
+      font-weight: bold;
+      font-size: 0.8rem;
+    }
+  }
+`
+
 export default function HomePage() {
   return (
     <Layout>
@@ -137,6 +194,27 @@ export default function HomePage() {
           让你能够实时掌握：运营数据、前端报错、页面性能、接口性能、以及小程序监控
         </h3>
       </Quote>
+
+      <Grid>
+        {Array(6)
+          .fill(0)
+          .map(() => ({
+            title: '数据概览',
+            desc: '实时掌握项目的健康状态，PV/UV、报错、用户分布等。',
+            content:
+              '通过对线上项目的实时分析，能让我们对线上状况有非常直观的了解。例如PV、UV数据的变化趋势，线上报错、异常等, 同时还可以自定义警报功能。',
+          }))
+          .map(it => (
+            <GridItem>
+              <div key={it.title} className="item-box">
+                <img src="/icon-1.png" className="icon" alt="icon" />
+                <h3 className="title">{it.title}</h3>
+                <p className="description">{it.desc}</p>
+                <p className="content">{it.content}</p>
+              </div>
+            </GridItem>
+          ))}
+      </Grid>
     </Layout>
   )
 }
