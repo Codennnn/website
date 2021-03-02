@@ -8,6 +8,7 @@ import AppFooter from './AppFooter'
 const AppLayout = styled.div`
   position: relative;
   right: 0;
+  padding-top: ${LAYOUT.headerHeight};
 `
 
 const Main = styled.main`

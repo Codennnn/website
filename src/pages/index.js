@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { LAYOUT } from '~/config/theme'
 import Layout from '@/components/layout'
 
 const Hero = styled.div`
@@ -11,7 +10,7 @@ const Hero = styled.div`
     position: relative;
     width: 1150px;
     margin: 0 auto;
-    padding-top: calc(4rem + ${LAYOUT.headerHeight});
+    padding-top: 4rem;
     padding-bottom: 4rem;
 
     .sub-title {
@@ -25,7 +24,7 @@ const Hero = styled.div`
       top: 0;
       right: 0;
       width: 35rem;
-      padding-top: calc(1.6rem + ${LAYOUT.headerHeight});
+      padding-top: 2rem;
       user-select: none;
     }
   }
@@ -112,7 +111,7 @@ const Grid = styled.div`
   display: flex;
   flex-wrap: wrap;
   width: 1150px;
-  margin: 0 -1rem;
+  margin: 0 0 5rem 0;
   transform: translateX(-50%);
 `
 
@@ -159,6 +158,63 @@ const GridItem = styled.div`
       color: #828594;
       font-weight: bold;
       font-size: 0.8rem;
+    }
+  }
+`
+
+const Section = styled.div`
+  width: 1150px;
+  margin: 0 auto 4rem auto;
+  padding: 0 0 2rem 0;
+  font-weight: bold;
+
+  .title {
+    margin-bottom: 5rem;
+    color: #393f56;
+    font-weight: bold;
+    font-size: 1.8rem;
+    text-align: center;
+  }
+
+  .flex {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .text-box {
+    max-width: 30%;
+
+    .sub-title {
+      font-weight: bold;
+      font-size: 1.6rem;
+    }
+
+    .desc {
+      margin: 1rem 0 2.5rem 0;
+      color: #828594;
+      font-size: 0.95rem;
+      line-height: 1.8;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-right: 1rem;
+      padding: 0.7rem 1rem;
+      color: #fff;
+      font-size: 0.9rem;
+      background: #ff7626;
+      border-color: #ff7626;
+      border-radius: 999rem;
+      box-shadow: 0 0.25rem 0.9rem 0 rgb(253 118 39 / 30%);
+    }
+  }
+
+  .image-box {
+    width: 54%;
+
+    img {
+      border: 0.9rem solid #ebebeb;
+      border-radius: 1rem;
     }
   }
 `
@@ -215,6 +271,40 @@ export default function HomePage() {
             </GridItem>
           ))}
       </Grid>
+
+      <Section>
+        <h2 className="title">产品专区</h2>
+
+        <div className="flex">
+          <div className="text-box">
+            <h3 className="sub-title">数据分析大屏</h3>
+            <p className="desc">
+              一站式数据可视化展示平台，炫酷大屏，自由部署，实时数据，项目运行状态和健康状态尽收眼底。
+            </p>
+            <div className="btn">查看演示效果</div>
+          </div>
+
+          <div className="image-box">
+            <img alt="gif" src="/home.gif" />
+          </div>
+        </div>
+      </Section>
+
+      <Section>
+        <div className="flex">
+          <div className="image-box">
+            <img alt="gif" src="/home.gif" />
+          </div>
+
+          <div className="text-box">
+            <h3 className="sub-title">数据分析大屏</h3>
+            <p className="desc">
+              一站式数据可视化展示平台，炫酷大屏，自由部署，实时数据，项目运行状态和健康状态尽收眼底。
+            </p>
+            <div className="btn">查看演示效果</div>
+          </div>
+        </div>
+      </Section>
     </Layout>
   )
 }

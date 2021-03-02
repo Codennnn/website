@@ -12,11 +12,11 @@ export const COLORS = {
     dark: 'hsl(240, 6%, 14%)',
   },
   accent: {
-    light: 'hsl(36, 94%, 59%)',
+    light: '#ff6b30',
     dark: 'hsl(30, 100%, 80%)',
   },
   primary: {
-    light: 'hsl(36, 94%, 59%)',
+    light: '#ff6b30',
     dark: 'hsl(210, 16%, 82%)',
   },
   'primary-hsl': {
