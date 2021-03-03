@@ -4,7 +4,7 @@ const nav = [
     name: '更新日志',
   },
   {
-    url: '/log',
+    url: '/faq',
     name: '问/答（FAQ）',
   },
 ]

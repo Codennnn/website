@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 
+import { LAYOUT } from '~/config/theme'
 import Layout from '@/components/layout'
 
 const Hero = styled.div`
   background-color: #f8f8f9;
+  box-shadow: 0 -${LAYOUT.headerHeight} 0 0 #f8f8f9;
 
   .container {
     position: relative;
@@ -55,15 +57,15 @@ const Action = styled.div`
   .btn-primary {
     margin-right: 1rem;
     color: #fff;
-    background: #ff7626;
-    border-color: #ff7626;
-    box-shadow: 0 0.25rem 0.9rem 0 rgb(253 118 39 / 30%);
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    box-shadow: 0 0.25rem 0.9rem 0 rgba(253 118 39 / 30%);
   }
 
   .btn-default {
-    color: #ff7626;
+    color: var(--color-primary);
     background: #fff;
-    box-shadow: 0 2px 0 rgb(0 0 0 / 2%);
+    box-shadow: 0 2px 0 rgba(0 0 0 / 2%);
   }
 `
 
@@ -148,7 +150,7 @@ const GridItem = styled.div`
         left: 0;
         width: 2rem;
         height: 0.09rem;
-        background: #ff7626;
+        background: var(--color-primary);
         content: '';
       }
     }
@@ -202,8 +204,8 @@ const Section = styled.div`
       padding: 0.7rem 1rem;
       color: #fff;
       font-size: 0.9rem;
-      background: #ff7626;
-      border-color: #ff7626;
+      background: var(--color-primary);
+      border-color: var(--color-primary);
       border-radius: 999rem;
       box-shadow: 0 0.25rem 0.9rem 0 rgb(253 118 39 / 30%);
     }
@@ -217,9 +219,100 @@ const Section = styled.div`
       border-radius: 1rem;
     }
   }
+
+  .download-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .download-btn {
+      width: 9rem;
+      height: 3rem;
+      margin-top: 1rem;
+      color: var(--color-primary);
+      font-weight: bold;
+      font-size: 0.9rem;
+      background: #fff;
+      border: none;
+      border-radius: 999rem;
+      box-shadow: 0 0.3rem 0.5rem 0 rgba(0 0 0 / 8%);
+      cursor: pointer;
+    }
+
+    .radio-wrapper {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+
+      .radio {
+        position: relative;
+        display: inline-block;
+        width: 1rem;
+        height: 1rem;
+        padding: 0;
+        color: rgba(0, 0, 0, 0.85);
+        font-size: 14px;
+        font-variant: tabular-nums;
+        line-height: 1.5715;
+        white-space: nowrap;
+        list-style: none;
+        font-feature-settings: 'tnum';
+
+        &::before {
+          position: absolute;
+          top: 50%;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          border: 1px solid var(--color-primary);
+          border-radius: 50%;
+          transform: translate(0, -50%);
+          transition: box-shadow 0.2s;
+          content: '';
+        }
+
+        &.checked::before {
+          box-shadow: 0 0 0.2rem 0.01rem var(--color-primary);
+        }
+
+        &::after {
+          transform: translate(-50%, -50%) scale(0);
+          opacity: 0;
+          transition: opacity 0.2s transform 0.2s;
+        }
+
+        &.checked::after {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          width: 50%;
+          height: 50%;
+          background: var(--color-primary);
+          border-radius: 50%;
+          transform: translate(-50%, -50%) scale(1);
+          opacity: 1;
+          content: '';
+        }
+      }
+
+      .text {
+        padding: 0 0.5rem;
+      }
+
+      input[type='radio'] {
+        opacity: 0;
+      }
+    }
+  }
 `
 
 export default function HomePage() {
+  const [version, setVersion] = useState('32')
+
+  function onRadioChange(e) {
+    setVersion(e.target.value)
+  }
+
   return (
     <Layout>
       <Hero>
@@ -231,7 +324,9 @@ export default function HomePage() {
           <p className="sub-title">Webfunny支持千万级PV的日活量啦 ！！！</p>
 
           <Action>
-            <button className="btn-primary">立即体验 DEMO</button>
+            <a href="#download">
+              <button className="btn-primary">下载客户端</button>
+            </a>
             <button className="btn-default">产品视频</button>
           </Action>
 
@@ -302,6 +397,35 @@ export default function HomePage() {
               一站式数据可视化展示平台，炫酷大屏，自由部署，实时数据，项目运行状态和健康状态尽收眼底。
             </p>
             <div className="btn">查看演示效果</div>
+          </div>
+        </div>
+      </Section>
+
+      <Section id="download">
+        <h2 className="title">下载专区</h2>
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
+          <div className="download-box" style={{ marginRight: '5rem' }}>
+            <img src="/icon-1.png" className="icon" alt="icon" />
+            <button className="download-btn">下载按钮</button>
+            <div onChange={onRadioChange}>
+              {['32', '64'].map(v => (
+                <label className="radio-wrapper">
+                  <span className={`radio ${v === version && 'checked'}`}>
+                    <input
+                      type="radio"
+                      name="version"
+                      value={v}
+                      defaultCheck={version === v}
+                    ></input>
+                  </span>
+                  <span className="text">{v}位</span>
+                </label>
+              ))}
+            </div>
+          </div>
+          <div className="download-box">
+            <img src="/icon-1.png" className="icon" alt="icon" />
+            <button className="download-btn">下载按钮</button>
           </div>
         </div>
       </Section>

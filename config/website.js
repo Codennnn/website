@@ -5,7 +5,7 @@ module.exports = {
   siteUrl: 'https://leoku.top', // Domain of your site. No trailing slash!
   siteIcon: '/favicon.ico',
   lang: 'zh-CN', // 网站所用语言
-  pathPrefix: '/',
+  pathPrefix: '/website',
   siteLogo: 'images/logo.png', // Used for SEO and manifest, path to your image you placed in the 'static' folder
   siteDescription: '官网',
   author: 'LeoKu', // Author for schemaORGJSONLD

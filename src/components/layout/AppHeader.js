@@ -14,8 +14,30 @@ const Header = styled.header`
   width: 100%;
   height: ${LAYOUT.headerHeight};
   color: var(--color-text);
+  background: hsla(0, 0%, 100%, 0);
+
+  &::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -2;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: hsla(0, 0%, 100%, 0)
+      linear-gradient(180deg, #f7faff, rgba(247, 250, 255, 0));
+    backdrop-filter: blur(4px) saturate(200%);
+    content: ' ';
+    pointer-events: none;
+  }
+
+  &::after {
+    z-index: -1;
+    background: hsla(0, 0%, 100%, 0.66667);
+  }
 
   .header-inner {
+    position: relative;
     display: flex;
     align-items: center;
     width: 1150px;
