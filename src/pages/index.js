@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { withPrefix } from 'gatsby'
 import styled from 'styled-components'
 
 import { LAYOUT } from '~/config/theme'
@@ -331,7 +332,7 @@ export default function HomePage() {
           </Action>
 
           <img
-            src="/banner.png"
+            src={withPrefix('/banner.png')}
             alt="banner"
             className="banner"
             draggable="false"
@@ -358,7 +359,11 @@ export default function HomePage() {
           .map(it => (
             <GridItem>
               <div key={it.title} className="item-box">
-                <img src="/icon-1.png" className="icon" alt="icon" />
+                <img
+                  src={withPrefix('/icon-1.png')}
+                  className="icon"
+                  alt="icon"
+                />
                 <h3 className="title">{it.title}</h3>
                 <p className="description">{it.desc}</p>
                 <p className="content">{it.content}</p>
@@ -380,7 +385,7 @@ export default function HomePage() {
           </div>
 
           <div className="image-box">
-            <img alt="gif" src="/home.gif" />
+            <img alt="gif" src={withPrefix('/home.gif')} />
           </div>
         </div>
       </Section>
@@ -388,7 +393,7 @@ export default function HomePage() {
       <Section>
         <div className="flex">
           <div className="image-box">
-            <img alt="gif" src="/home.gif" />
+            <img alt="gif" src={withPrefix('/home.gif')} />
           </div>
 
           <div className="text-box">
@@ -405,7 +410,7 @@ export default function HomePage() {
         <h2 className="title">下载专区</h2>
         <div style={{ display: 'flex', justifyContent: 'center' }}>
           <div className="download-box" style={{ marginRight: '5rem' }}>
-            <img src="/icon-1.png" className="icon" alt="icon" />
+            <img src={withPrefix('/icon-1.png')} className="icon" alt="icon" />
             <button className="download-btn">下载按钮</button>
             <div onChange={onRadioChange}>
               {['32', '64'].map(v => (
@@ -424,7 +429,7 @@ export default function HomePage() {
             </div>
           </div>
           <div className="download-box">
-            <img src="/icon-1.png" className="icon" alt="icon" />
+            <img src={withPrefix('/icon-1.png')} className="icon" alt="icon" />
             <button className="download-btn">下载按钮</button>
           </div>
         </div>
