@@ -1,3 +1,2 @@
 const ghpages = require('gh-pages')
-
-ghpages.publish('public', function (err) {})
+ghpages.publish('config', function (err) {})
