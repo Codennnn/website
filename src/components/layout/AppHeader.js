@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'gatsby'
+import { Link, withPrefix } from 'gatsby'
 import styled from 'styled-components'
 
 import { LAYOUT, SCREENS } from '~/config/theme'
@@ -101,7 +101,7 @@ export default function AppHeader() {
     <Header className="header">
       <div className="header-inner">
         <Link className="site-name" to="/">
-          <img src="/logo.png" alt="Logo" className="logo" />
+          <img src={withPrefix('/logo.png')} alt="Logo" className="logo" />
         </Link>
 
         <NavLinks>
